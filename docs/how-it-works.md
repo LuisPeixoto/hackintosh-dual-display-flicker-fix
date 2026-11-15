@@ -60,7 +60,7 @@ runs of 3 to 4 loops each, on one machine:
 
 | Setup | Without the fix | With the fix |
 |-------|-----------------|--------------|
-| Monitor at its native resolution | 0, 2, 2, 2, 3, 1 (six runs) | 0 (two runs) |
+| Monitor at its native resolution | 0, 2, 2, 2, 3, 1 (six runs) | 0 and 0 (two runs, the second of a single loop) |
 | Same monitor in a 6400x2700 HiDPI mode | 3 and 10 (two runs) | 0 and 0 (two runs) |
 
 The "without" runs include other settings that were tried and had no measurable effect (see

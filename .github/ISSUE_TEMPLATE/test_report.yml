@@ -1,0 +1,60 @@
+name: Test report
+description: Tell us whether the fix worked on your machine, or not
+labels: [test-report]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you! Reports that **contradict** the fix are as useful as the ones that confirm it.
+        Measure before and after with [docs/measuring.md](https://github.com/LuisPeixoto/hackintosh-dual-display-flicker-fix/blob/main/docs/measuring.md).
+        **Remove personal data** (serials, UUIDs, SMBIOS values) from anything you paste.
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options:
+        - Fixed, no flicker anymore
+        - Better, but it still happens sometimes
+        - No change
+        - Made things worse
+    validations:
+      required: true
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU
+      placeholder: "AMD Radeon RX 6600 XT (Navi 23)"
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: "26.2 (25C56)"
+    validations:
+      required: true
+  - type: input
+    id: opencore
+    attributes:
+      label: OpenCore and WhateverGreen versions
+      placeholder: "OpenCore 1.0.6, WhateverGreen 1.7.1"
+  - type: textarea
+    id: displays
+    attributes:
+      label: Displays and cables
+      description: How many monitors, which ports, and any adapters (for example DP to HDMI).
+    validations:
+      required: true
+  - type: textarea
+    id: numbers
+    attributes:
+      label: Before and after numbers
+      description: The output of `tools/measure-flicker.sh` without the fix and with it.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Side effects you noticed (for example monitors not detected after power-cycling them).

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: How the fix works
+    url: https://github.com/LuisPeixoto/hackintosh-dual-display-flicker-fix/blob/main/docs/how-it-works.md
+    about: Read this first if you want to understand what the property changes.

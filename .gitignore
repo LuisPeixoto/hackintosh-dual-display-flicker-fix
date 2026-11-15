@@ -1,0 +1,14 @@
+# Local scratch
+*.log
+*.tmp
+.scratch/
+
+# Carved driver pieces and symbol dumps (derived from Apple binaries, never commit)
+*.macho
+*.nm
+*.kc
+
+# Editors / OS
+.DS_Store
+.idea
+.vscode

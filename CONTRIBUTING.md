@@ -38,7 +38,7 @@ For anything bigger than a small fix, please open an issue first so we can agree
 
 ```bash
 python3 -m py_compile tools/*.py
-shellcheck tools/*.sh
+zsh -n tools/measure-flicker.sh
 python3 -c "import plistlib,sys; plistlib.load(open('examples/DeviceProperties-snippet.plist','rb'))"
 swiftc -parse tools/display-mode.swift   # macOS only
 ```

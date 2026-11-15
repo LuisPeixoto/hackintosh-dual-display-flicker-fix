@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Checks (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Python tools compile
+        run: python3 -m py_compile tools/*.py
+
+      - name: The example fragment is a valid plist with the expected key
+        run: |
+          python3 - <<'PY'
+          import plistlib
+          data = plistlib.load(open('examples/DeviceProperties-snippet.plist', 'rb'))
+          entries = data['DeviceProperties']['Add']
+          assert len(entries) == 1, entries
+          value = next(iter(entries.values()))['CFG_HIDE_HPD']
+          assert value == bytes([1, 0, 0, 0, 0, 0, 0, 0]), value
+          print('example plist ok')
+          PY
+
+      - name: Measurement script parses (zsh)
+        run: |
+          if ! command -v zsh >/dev/null; then sudo apt-get update && sudo apt-get install -y zsh; fi
+          zsh -n tools/measure-flicker.sh
+
+      - name: Swift tool parses
+        if: runner.os == 'macOS'
+        run: swiftc -parse tools/display-mode.swift

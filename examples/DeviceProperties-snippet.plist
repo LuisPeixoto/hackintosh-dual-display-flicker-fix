@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!-- Fragment to merge into config.plist. Replace the PciRoot path with the path of YOUR GPU
+     (see docs/how-it-works.md). If your config already has an entry for that path, add only the
+     CFG_HIDE_HPD key to it instead of creating a second entry. Value: Data, 8 bytes, 0100000000000000. -->
+<dict>
+	<key>DeviceProperties</key>
+	<dict>
+		<key>Add</key>
+		<dict>
+			<key>PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)</key>
+			<dict>
+				<key>CFG_HIDE_HPD</key>
+				<data>
+				AQAAAAAAAAA=
+				</data>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>
